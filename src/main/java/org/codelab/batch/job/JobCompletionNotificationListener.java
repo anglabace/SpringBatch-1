@@ -1,4 +1,4 @@
-package hello;
+package org.codelab.batch.job;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,7 @@ import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import dto.Person;
+import org.codelab.batch.dto.Person;
 
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
 

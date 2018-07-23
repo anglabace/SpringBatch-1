@@ -1,7 +1,8 @@
-package config;
+package org.codelab.batch.config;
 
 import javax.sql.DataSource;
 
+import org.codelab.batch.job.PersonItemProcessor;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -17,8 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-import dto.Person;
-import hello.PersonItemProcessor;
+import org.codelab.batch.dto.Person;
 
 @Configuration
 @EnableBatchProcessing

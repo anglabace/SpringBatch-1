@@ -1,4 +1,4 @@
-package dto;
+package org.codelab.batch.dto;
 
 public class Person {
 	private String lastName;
