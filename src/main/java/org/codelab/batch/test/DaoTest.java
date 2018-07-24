@@ -13,25 +13,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @MybatisTest
 public class DaoTest {
 
+//	@Autowired
+//	private PersonMapper personMapper;
+//	
 	@Autowired
-	private PersonMapper personMapper;
+	private PersonDao personDao;
 	
 	@Test
+	@Transactional
+	@Rollback(false)
 	public void daoTest() {
-		List<Person> list =personMapper.getPerson();
-		if(list==null) {
-			System.out.println(">>>>>>>>>>>>> test");
-			return;
-		}
+		
+		List<Person> list = personDao.getPersons();
 		for (Person person : list) {
-			System.out.println(person.getFirstName());
+			System.out.println(person.toString());
 		}
+		
+		Person person = new Person();
+		person.setFirstName("first1111");
+		person.setLastName("last122222");
+		int ret = personDao.insertPerson(person);
+		System.out.println(ret);
 	}
 }
