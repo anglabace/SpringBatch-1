@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBatchProcessing
-public class BatchConfiguration {
+public class BatchConfiguration2 {
 
-	private static final String JOB_NAME = "job1009";
+	private static final String JOB_NAME = "job1010";
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
 

@@ -1,5 +1,7 @@
 package org.codelab.batch.config;
 
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,27 +12,24 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-public class DBConfig {
+@ConfigurationProperties(prefix = "spring.datasource")
+public class DBConfig extends HikariConfig {
+
+	public DBConfig() {
+	}
 
 	@Autowired
 	ApplicationContext applicationContext;
-	
-	@Bean
-	@Primary
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public HikariConfig hikariConfig() {
-		return new HikariConfig();
-	}
 
-	@Bean(destroyMethod = "close")
-	public DataSource dataSource() {
-		return new HikariDataSource(hikariConfig());
+	@Bean
+	public DataSource dataSource() throws SQLException {
+		return new HikariDataSource(this);
 	}
 
 	@Bean
@@ -38,7 +37,7 @@ public class DBConfig {
 		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource);
 		sessionFactoryBean.setTypeAliasesPackage("org.codelab.batch.dto");
-		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:mapper/*.xml"));
+		sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
 		return sessionFactoryBean.getObject();
 	}
 

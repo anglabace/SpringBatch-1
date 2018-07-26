@@ -1,0 +1,19 @@
+spring:
+   profiles: local
+   datasource:
+      jdbc-url: jdbc:mysql://192.168.0.6:3306/codelab
+      username: codej99
+      password: kim73221722
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+         connection-test-query: SELECT 1
+---
+spring:        
+   profiles: dev
+   datasource:
+      jdbc-url: jdbc:mysql://192.168.0.6:3306/codelab1
+      username: codej99
+      password: kim73221722
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+         connection-test-query: SELECT 1
