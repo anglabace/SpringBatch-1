@@ -1,8 +1,7 @@
-package org.codelab.batch.config;
+package org.codelab.batch.job.file;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.codelab.batch.dto.Person;
-import org.codelab.batch.job.PersonItemProcessor;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -11,14 +10,16 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 
 @Configuration
-public class StepConfiguration {
+public class FileJobStepConfig {
 
-	private static final String STEP_NAME = "Step";
+	private static final String STEP_NAME = "fileJobStep";
 	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
@@ -26,8 +27,8 @@ public class StepConfiguration {
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 	
-	@Bean
-    public Step Step() {
+	@Bean(name=STEP_NAME)
+    public Step step() {
         return stepBuilderFactory.get(STEP_NAME)
             .<Person, Person>chunk(1)
             .reader(reader())
@@ -49,8 +50,8 @@ public class StepConfiguration {
 	}
 	
 	@Bean
-	public PersonItemProcessor processor() {
-		return new PersonItemProcessor();
+	public transformItemProcessor processor() {
+		return new transformItemProcessor();
 	}
 	
 	@Bean

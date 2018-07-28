@@ -7,6 +7,9 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       hikari:
          connection-test-query: SELECT 1
+logging:
+   level:
+      org.codelab.batch: DEBUG
 ---
 spring:        
    profiles: dev
@@ -17,3 +20,6 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       hikari:
          connection-test-query: SELECT 1
+logging:
+   level:
+      org.codelab.batch: INFO
