@@ -1,4 +1,4 @@
-package org.codelab.batch.job.file;
+package org.codelab.batch.job.ipfilter;
 
 import org.codelab.batch.common.Const;
 import org.springframework.batch.core.Job;
@@ -13,17 +13,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableBatchProcessing
-public class FileJobConfig {
+public class IpFilterJobConfig {
 
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
 
 	@Autowired
-	@Qualifier(Const.STEP_READFILE)
+	@Qualifier(Const.STEP_IPFILTER)
 	private Step step;
 
-	@Bean(name = Const.JOB_READFILE)
+	@Bean(name = Const.JOB_IPFILTER)
 	public Job job() {
-		return jobBuilderFactory.get(Const.JOB_READFILE).incrementer(new RunIdIncrementer()).start(step).build();
+		return jobBuilderFactory.get(Const.JOB_IPFILTER).incrementer(new RunIdIncrementer()).start(step).build();
 	}
 }

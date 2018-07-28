@@ -1,6 +1,7 @@
 package org.codelab.batch.job.file;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.codelab.batch.common.Const;
 import org.codelab.batch.dto.Person;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;
 import org.springframework.batch.core.Step;
@@ -19,26 +20,24 @@ import org.springframework.core.io.ClassPathResource;
 @Configuration
 public class FileJobStepConfig {
 
-	private static final String STEP_NAME = "fileJobStep";
-	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 	
-	@Bean(name=STEP_NAME)
+	@Bean(name=Const.STEP_READFILE)
     public Step step() {
-        return stepBuilderFactory.get(STEP_NAME)
+        return stepBuilderFactory.get(Const.STEP_READFILE)
             .<Person, Person>chunk(1)
-            .reader(reader())
+            .reader(personItemReader())
             .processor(processor())
             .writer(writer())
             .build();
     }
 	
 	@Bean
-	public FlatFileItemReader<Person> reader() {
+	public FlatFileItemReader<Person> personItemReader() {
 		return new FlatFileItemReaderBuilder<Person>()
 				.name("personItemReader")
 				.resource(new ClassPathResource("sample-data.csv"))

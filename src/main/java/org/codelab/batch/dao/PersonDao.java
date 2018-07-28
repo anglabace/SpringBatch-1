@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PersonDao {
 	
-	@Autowired
-	private SqlSession session;
+//	@Autowired
+//	private SqlSession session;
 	
 	@Autowired
 	private PersonMapper personMapper;
