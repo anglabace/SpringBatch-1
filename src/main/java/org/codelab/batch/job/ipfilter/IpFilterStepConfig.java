@@ -55,7 +55,7 @@ public class IpFilterStepConfig {
 	public FlatFileItemWriter<IpAddr> filteredIpWriter() {
 		FlatFileItemWriterBuilder<IpAddr> builder = new FlatFileItemWriterBuilder<>();
 		builder.name("filteredIpWriter");
-		builder.resource(new FileSystemResource("F:\\files\\ipaddr_filtered.txt"));
+		builder.resource(new FileSystemResource("D:\\files\\ipaddr_filtered.txt"));
 		builder.lineAggregator(new PassThroughLineAggregator<>());
 		return builder.build();
 	}
@@ -64,7 +64,7 @@ public class IpFilterStepConfig {
 	public FlatFileItemWriter<IpAddr> unfilteredIpWriter() {
 		FlatFileItemWriterBuilder<IpAddr> builder = new FlatFileItemWriterBuilder<>();
 		builder.name("unfilteredIpWriter");
-		builder.resource(new FileSystemResource("F:\\files\\ipaddr_unfiltered.txt"));
+		builder.resource(new FileSystemResource("D:\\files\\ipaddr_unfiltered.txt"));
 		builder.lineAggregator(new PassThroughLineAggregator<>());
 		return builder.build();
 	}

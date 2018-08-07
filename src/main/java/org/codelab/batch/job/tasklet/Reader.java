@@ -9,7 +9,7 @@ import org.springframework.batch.item.UnexpectedInputException;
 
 public class Reader implements ItemReader<String> {
 	
-	private String[] files = {"F:\\files\\ipaddr_filtered.txt"};
+	private String[] files = {"D:\\files\\ipaddr_filtered.txt"};
 	public int count =0;
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	

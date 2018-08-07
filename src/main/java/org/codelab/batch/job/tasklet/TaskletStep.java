@@ -14,7 +14,7 @@ public class TaskletStep implements Tasklet {
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		try {
-			File file = new File("F:\\files\\ipaddr_filtered.txt");
+			File file = new File("D:\\files\\ipaddr_filtered.txt");
 			if (file.delete())
 				System.out.println("############# TASKLET STEP : " + file.getName() + " is deleted");
 			else
