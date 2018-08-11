@@ -7,6 +7,4 @@ public class Const {
 	public static final String JOB_IPFILTER = "ipfilter";
 	public static final String JOB_PARALLEL = "parallel";
 	public static final String JOB_TASKLET = "tasklet";
-	
-	public static final String STEP_IPFILTER = "step_ipfilter";
 }

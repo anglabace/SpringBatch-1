@@ -26,9 +26,9 @@ public class IpFilterStepConfig {
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 	
-	@Bean(name=Const.STEP_IPFILTER)
-	public Step step() {
-		return stepBuilderFactory.get(Const.STEP_IPFILTER)
+	@Bean
+	public Step stepIpfilter() {
+		return stepBuilderFactory.get("stepIpfilter")
 				.<IpAddr,IpAddr> chunk(1)
 				.reader(ipReader())
 				.processor(new IpFilterProcessor())

@@ -19,11 +19,10 @@ public class IpFilterJobConfig {
 	public JobBuilderFactory jobBuilderFactory;
 
 	@Autowired
-	@Qualifier(Const.STEP_IPFILTER)
-	private Step step;
+	private Step stepIpfilter;
 
 	@Bean(name = Const.JOB_IPFILTER)
 	public Job job() {
-		return jobBuilderFactory.get(Const.JOB_IPFILTER).incrementer(new RunIdIncrementer()).start(step).build();
+		return jobBuilderFactory.get(Const.JOB_IPFILTER).incrementer(new RunIdIncrementer()).start(stepIpfilter).build();
 	}
 }
