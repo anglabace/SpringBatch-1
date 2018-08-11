@@ -15,7 +15,6 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -28,6 +27,9 @@ public class FileJobConfig {
 	public JobBuilderFactory jobBuilderFactory;
 	
 	@Autowired
+	private StepBuilderFactory stepBuilderFactory;
+	
+	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
 	@Bean(name = Const.JOB_READFILE)
@@ -36,9 +38,6 @@ public class FileJobConfig {
 				.incrementer(new RunIdIncrementer())
 				.start(stepReadfile()).build();
 	}
-	
-	@Autowired
-	private StepBuilderFactory stepBuilderFactory;
 	
 	@Bean
     public Step stepReadfile() {

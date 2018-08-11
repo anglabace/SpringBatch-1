@@ -31,7 +31,7 @@ public class IpFilterStepConfig {
 		return stepBuilderFactory.get("stepIpfilter")
 				.<IpAddr,IpAddr> chunk(1)
 				.reader(ipReader())
-				.processor(new IpFilterProcessor())
+				.processor(ipFilterProcessor())
 				.writer(ipClassifierFileWriter())
 				.stream(filteredIpWriter())
 				.stream(unfilteredIpWriter())
@@ -52,6 +52,23 @@ public class IpFilterStepConfig {
 	}
 	
 	@Bean
+	public IpFilterProcessor ipFilterProcessor() {
+		return new IpFilterProcessor();
+	}
+	
+	@Bean
+	public ClassifierCompositeItemWriter<IpAddr> ipClassifierFileWriter() {
+		Map<Boolean, ItemWriter<IpAddr>> writerMap = new HashMap<>();
+		writerMap.put(true, filteredIpWriter());
+		writerMap.put(false, unfilteredIpWriter());
+		ClassifierCompositeItemWriter writer = new ClassifierCompositeItemWriter();
+		writer.setClassifier(new IpClassfier() {{
+			setWriterMap(writerMap);
+		}});
+		return writer;
+	}
+	
+	@Bean
 	public FlatFileItemWriter<IpAddr> filteredIpWriter() {
 		FlatFileItemWriterBuilder<IpAddr> builder = new FlatFileItemWriterBuilder<>();
 		builder.name("filteredIpWriter");
@@ -67,17 +84,5 @@ public class IpFilterStepConfig {
 		builder.resource(new FileSystemResource("D:\\files\\ipaddr_unfiltered.txt"));
 		builder.lineAggregator(new PassThroughLineAggregator<>());
 		return builder.build();
-	}
-	
-	@Bean
-	public ClassifierCompositeItemWriter<IpAddr> ipClassifierFileWriter() {
-		Map<Boolean, ItemWriter<IpAddr>> writerMap = new HashMap<>();
-		writerMap.put(true, filteredIpWriter());
-		writerMap.put(false, unfilteredIpWriter());
-		ClassifierCompositeItemWriter writer = new ClassifierCompositeItemWriter();
-		writer.setClassifier(new IpClassfier() {{
-			setWriterMap(writerMap);
-		}});
-		return writer;
 	}
 }

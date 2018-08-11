@@ -29,6 +29,11 @@ public class AlphabetReader implements ItemReader<String> {
 		alphabets.add("c");
 		alphabets.add("d");
 		alphabets.add("e");
+		alphabets.add("f");
+		alphabets.add("g");
+		alphabets.add("h");
+		alphabets.add("i");
+		alphabets.add("j");
 	}
 
 	@Override

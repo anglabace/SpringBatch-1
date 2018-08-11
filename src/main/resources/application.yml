@@ -23,4 +23,4 @@ spring:
          connection-test-query: SELECT 1
 logging:
    level:
-      org.codelab.batch: INFO
+      org.codelab.batch: DEBUG

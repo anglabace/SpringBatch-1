@@ -1,9 +1,9 @@
 package org.codelab.batch.dto;
 
 public class Person {
-	private String lastName;
 	private String firstName;
-
+	private String lastName;
+	
 	public Person() {
 
 	}

@@ -23,6 +23,9 @@ public class IpFilterJobConfig {
 
 	@Bean(name = Const.JOB_IPFILTER)
 	public Job job() {
-		return jobBuilderFactory.get(Const.JOB_IPFILTER).incrementer(new RunIdIncrementer()).start(stepIpfilter).build();
+		return jobBuilderFactory.get(Const.JOB_IPFILTER)
+				.incrementer(new RunIdIncrementer())
+				.start(stepIpfilter)
+				.build();
 	}
 }
