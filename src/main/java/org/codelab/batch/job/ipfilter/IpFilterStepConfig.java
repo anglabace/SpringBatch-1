@@ -55,6 +55,7 @@ public class IpFilterStepConfig {
 		return new IpFilterProcessor();
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked", "serial" })
 	@Bean
 	public ClassifierCompositeItemWriter<IpAddr> ipClassifierFileWriter() {
 		Map<Boolean, ItemWriter<IpAddr>> writerMap = new HashMap<>();

@@ -1,7 +1,5 @@
 package org.codelab.batch.job.partitioner;
 
-import java.util.Date;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.codelab.batch.common.Const;
 import org.codelab.batch.dto.Person;
