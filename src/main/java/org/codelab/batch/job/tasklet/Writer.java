@@ -12,12 +12,12 @@ import org.springframework.batch.item.ItemWriter;
 
 public class Writer implements ItemWriter<String> {
 
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final Logger log = LoggerFactory.getLogger(Writer.class);
 	
 	@Override
 	public void write(List<? extends String> paths) throws Exception {
 		for (String filePath : paths) {
-			System.out.println("filePath = "+filePath);
+			log.info("filePath = {}", filePath);
 			try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
 				stream.forEach(System.out::println);
 			} catch (IOException e) {
@@ -25,5 +25,4 @@ public class Writer implements ItemWriter<String> {
 			}
 		}
 	}
-
 }

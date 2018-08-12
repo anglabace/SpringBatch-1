@@ -1,6 +1,7 @@
 package org.codelab.batch.dto;
 
 public class Person {
+	private int personId;
 	private String firstName;
 	private String lastName;
 	
@@ -11,6 +12,14 @@ public class Person {
 	public Person(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+
+	public int getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(int personId) {
+		this.personId = personId;
 	}
 
 	public String getLastName() {

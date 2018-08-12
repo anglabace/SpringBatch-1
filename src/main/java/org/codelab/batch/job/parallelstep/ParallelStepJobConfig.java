@@ -1,7 +1,6 @@
 package org.codelab.batch.job.parallelstep;
 
 import org.codelab.batch.common.Const;
-import org.codelab.batch.dto.IpAddr;
 import org.codelab.batch.job.alphabet.AlphabetReader;
 import org.codelab.batch.job.alphabet.UpperCaseProcessor;
 import org.springframework.batch.core.Job;
@@ -13,13 +12,9 @@ import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.item.file.FlatFileItemWriter;
-import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
-import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 

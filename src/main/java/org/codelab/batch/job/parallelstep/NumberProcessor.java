@@ -10,7 +10,7 @@ public class NumberProcessor implements ItemProcessor<Integer, Integer> {
 
 	@Override
 	public Integer process(Integer item) throws Exception {
-		log.debug("Process - {}", item+10);
+		log.info("Process - {}", item+10);
 		return item+10;
 	}
 }

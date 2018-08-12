@@ -43,7 +43,7 @@ public class NumberReader implements ItemReader<Integer> {
 			number = numbers.get(idx);
 			idx++;
 		}
-		log.debug("Read {} - {}", idx, number);
+		log.info("Read {} - {}", idx, number);
 		return number;
 	}
 }

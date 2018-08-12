@@ -3,7 +3,6 @@ package org.codelab.batch.job.ipfilter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.codelab.batch.common.Const;
 import org.codelab.batch.dto.IpAddr;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;

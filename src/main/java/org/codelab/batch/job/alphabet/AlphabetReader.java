@@ -43,7 +43,7 @@ public class AlphabetReader implements ItemReader<String> {
 			alphabet = alphabets.get(idx);
 			idx++;
 		}
-		log.debug("Read {} - {}", idx, alphabet);
+		log.info("Read {} - {}", idx, alphabet);
 		return alphabet;
 	}
 }

@@ -10,7 +10,7 @@ public class UpperCaseProcessor implements ItemProcessor<String, String> {
 
 	@Override
 	public String process(String item) throws Exception {
-		log.debug("Process - {}", item.toUpperCase());
+		log.info("Process - {}", item.toUpperCase());
 		return item.toUpperCase();
 	}
 }
