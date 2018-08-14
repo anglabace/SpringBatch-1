@@ -38,7 +38,6 @@ public class DaoTest {
 		for (Person person : list) {
 			System.out.println(person.toString());
 		}
-		
 		Person person = new Person();
 		person.setFirstName("first1111");
 		person.setLastName("last122222");
