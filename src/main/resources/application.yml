@@ -5,7 +5,7 @@ spring:
       jdbc-url: jdbc:mysql://192.168.0.6:3306/codelab?useSSL=false
       username: codej99
       password: kim73221722
-      driver-class-name: com.mysql.jdbc.Driver
+      #driver-class-name: com.mysql.jdbc.Driver
       hikari:
          connection-test-query: SELECT 1
 logging:
@@ -15,10 +15,10 @@ logging:
 spring:
    profiles: notebook
    datasource:
-      jdbc-url: jdbc:mysql://localhost:3306/codelab?useSSL=false
+      jdbc-url: jdbc:mysql://localhost:32769/codelab?useSSL=false&allowPublicKeyRetrieval=true
       username: codej99
       password: cjstk1
-      driver-class-name: com.mysql.jdbc.Driver
+      #driver-class-name: com.mysql.jdbc.Driver
       hikari:
          connection-test-query: SELECT 1
 logging:
