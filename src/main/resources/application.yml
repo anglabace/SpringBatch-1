@@ -33,7 +33,7 @@ logging:
 spring:
    profiles: docker
    datasource:
-      jdbc-url: jdbc:mysql://localhost:32771/codelab?useSSL=false
+      jdbc-url: jdbc:mysql://192.168.0.5:32771/codelab?useSSL=false
       username: codej99
       password: cjstk1
       driver-class-name: com.mysql.jdbc.Driver
