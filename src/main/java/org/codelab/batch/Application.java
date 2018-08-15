@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableBatchProcessing // ¹èÄ¡±â´É È°¼ºÈ­
+@EnableBatchProcessing // ë°°ì¹˜ í™œì„±í™”
 @EnableAutoConfiguration
 @ComponentScan(value = {"org.codelab.batch"})
 public class Application {
