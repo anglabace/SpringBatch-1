@@ -1,4 +1,9 @@
 spring:
+  profiles:
+    active: linux
+
+---
+spring:
    profiles: linux
    datasource:
       database: mysql
