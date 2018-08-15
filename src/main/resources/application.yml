@@ -1,5 +1,5 @@
 spring:
-   profiles: local
+   profiles: linux
    datasource:
       database: mysql
       jdbc-url: jdbc:mysql://192.168.0.6:3306/codelab?useSSL=false
@@ -10,12 +10,12 @@ spring:
          connection-test-query: SELECT 1
 logging:
    level:
-      org.codelab.batch: DEBUG
+      org.codelab.batch: INFO
 ---
 spring:
    profiles: notebook
    datasource:
-      jdbc-url: jdbc:mysql://localhost:3306/codelab?useSSL=false&allowPublicKeyRetrieval=true
+      jdbc-url: jdbc:mysql://localhost:3306/codelab?useSSL=false
       username: codej99
       password: cjstk1
       driver-class-name: com.mysql.jdbc.Driver
