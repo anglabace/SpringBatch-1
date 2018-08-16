@@ -1,31 +1,22 @@
 spring:
   profiles:
-    active: linux
-
----
-spring:
-   profiles: linux
-   datasource:
-      database: mysql
-      jdbc-url: jdbc:mysql://192.168.0.6:3306/codelab?useSSL=false
-      username: codej99
-      password: kim73221722
-      driver-class-name: com.mysql.jdbc.Driver
-      hikari:
-         connection-test-query: SELECT 1
-logging:
-   level:
-      org.codelab.batch: INFO
+    active: notebook
+mybatis:
+    type-aliases-package: org.codelab.batch.dto
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+        default-fetch-size: 100
+        default-statement-timeout: 30
 ---
 spring:
    profiles: notebook
    datasource:
-      jdbc-url: jdbc:mysql://localhost:3306/codelab?useSSL=false
+      database: mysql
+      url: jdbc:mysql://localhost:3306/codelab?useSSL=false
       username: codej99
       password: cjstk1
       driver-class-name: com.mysql.jdbc.Driver
-      hikari:
-         connection-test-query: SELECT 1
 logging:
    level:
       org.codelab.batch: INFO
@@ -33,12 +24,11 @@ logging:
 spring:
    profiles: docker
    datasource:
-      jdbc-url: jdbc:mysql://192.168.0.5:32771/codelab?useSSL=false
+      database: mysql
+      url: jdbc:mysql://192.168.0.5:32771/codelab?useSSL=false
       username: codej99
       password: cjstk1
       driver-class-name: com.mysql.jdbc.Driver
-      hikari:
-         connection-test-query: SELECT 1
 logging:
    level:
       org.codelab.batch: INFO

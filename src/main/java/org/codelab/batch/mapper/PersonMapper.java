@@ -7,7 +7,6 @@ import org.codelab.batch.dto.Person;
 
 @Mapper
 public interface PersonMapper {
-	
 	List<Person> getPerson();
 	int insertPerson(Person person);
 }
