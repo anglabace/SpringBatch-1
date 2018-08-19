@@ -1,2 +1,2 @@
 spring batch project
-- mysql, mybatis
+- mysql, mybatis, batch
