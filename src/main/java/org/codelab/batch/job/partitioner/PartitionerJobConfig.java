@@ -55,7 +55,7 @@ public class PartitionerJobConfig {
 	@Bean
 	public PartitionHandler masterSlaveHandler() {
 		TaskExecutorPartitionHandler handler = new TaskExecutorPartitionHandler();
-		handler.setGridSize(5);
+		handler.setGridSize(10);
 		handler.setTaskExecutor(taskExecutor());
 		handler.setStep(slaveStep());
 		try {
@@ -81,7 +81,7 @@ public class PartitionerJobConfig {
 			@Value("#{stepExecutionContext[skipRows]}") final int skipRows,
 			@Value("#{stepExecutionContext[pageSize]}") final int pageSize,
 			@Value("#{stepExecutionContext[name]}") final String name) {
-		log.info("--------- called slaveReader -------------{}", name);
+		log.info("--------- called slaveReader -------------{}, {}, {}", name, skipRows, pageSize);
 		MyBatisPagingItemReader<Person> reader = new MyBatisPagingItemReader<>();
 		reader.setSqlSessionFactory(sqlSessionFactory);
 		reader.setQueryId("getPersonPaging");
