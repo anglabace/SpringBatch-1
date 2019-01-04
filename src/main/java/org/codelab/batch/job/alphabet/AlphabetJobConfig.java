@@ -29,7 +29,7 @@ public class AlphabetJobConfig {
 	@Bean
     public Step stepAlphabet() {
 		return stepBuilderFactory.get("stepAlphabet")
-				.<String,String> chunk(1)
+				.<String,String> chunk(5)
 				.reader(new AlphabetReader())
 				.processor(new UpperCaseProcessor())
 				.writer(new AlphabetWriter())
