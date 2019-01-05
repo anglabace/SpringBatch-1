@@ -1,1 +1,2 @@
-### Spring Batch 
+### Spring Batch ###
+Requrements : jdk 1.8
